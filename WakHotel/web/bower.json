@@ -1,0 +1,35 @@
+{
+  "name": "WakHotel",
+  "version": "0.1.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.4",
+    "jquery": "~2.1.4",
+    "angular-mocks": "~1.4.4",
+    "angular-bootstrap": "~0.13.3",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5",
+    "less": "~2.5.1",
+    "jquery-mousewheel": "~3.1.13",
+    "angular-local-storage": "~0.2.2",
+    "ngImgCrop": "~0.3.2",
+    "angular-i18n": "~1.4.4",
+    "ng-file-upload": "~7.0.15",
+    "angular-progress-arc": "~1.0.0",
+    "angular-dialog-service": "~5.2.8",
+    "angular-sanitize": "~1.4.5",
+    "angular-ui-validate": "~1.1.1",
+    "angular-wakanda": "~1.0.2"
+  },
+  "resolutions": {
+    "angular-bootstrap": "^0.14.3",
+    "angular": "~1.4.4"
+  }
+}

@@ -1,0 +1,3 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><permissions>
+	<allow action="read" groupName="Admin" groupID="01000000000000000000000000000000" resource="Model.contacts.first_name" temporaryForcePermissions="false" type="attribute"/>
+</permissions>

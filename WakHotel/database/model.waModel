@@ -1,0 +1,792 @@
+{
+	"toJSON": true,
+	"extraProperties": {
+		"version": "2",
+		"classes": {
+			"Rooms": {
+				"panelColor": "#BFBFBF",
+				"methVisible": "true",
+				"methodInhVisible": "true",
+				"relVisible": "true",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 516,
+						"Y": 21
+					}
+				}
+			},
+			"Hotels": {
+				"panelColor": "#eee",
+				"methVisible": "true",
+				"methodInhVisible": "true",
+				"relVisible": "true",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 1063,
+						"Y": 26
+					}
+				}
+			},
+			"Booking": {
+				"panelColor": "#996699",
+				"methVisible": "true",
+				"methodInhVisible": "true",
+				"relVisible": "true",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 588,
+						"Y": 404
+					}
+				}
+			},
+			"Ressources": {
+				"panelColor": "#B2A2C7",
+				"methVisible": "true",
+				"methodInhVisible": "true",
+				"relVisible": "true",
+				"panel": {
+					"isOpen": "false",
+					"pathVisible": true,
+					"position": {
+						"X": 1178,
+						"Y": 38
+					}
+				}
+			},
+			"Users": {
+				"panelColor": "#B7DDE8",
+				"methVisible": "true",
+				"methodInhVisible": "true",
+				"relVisible": "true",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 10,
+						"Y": 27
+					}
+				}
+			},
+			"Room_Type": {
+				"panelColor": "#D88CFF",
+				"methVisible": "true",
+				"methodInhVisible": "true",
+				"relVisible": "true",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 1085,
+						"Y": 403
+					}
+				}
+			},
+			"OAUTH2_USER": {
+				"panelColor": "#BFBFBF",
+				"flatVisible": "true",
+				"methVisible": "true",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 75,
+						"Y": 394
+					}
+				}
+			},
+			"Notifications": {
+				"panelColor": "#CCC1D9",
+				"flatVisible": "true",
+				"methVisible": "true",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 120,
+						"Y": 907
+					}
+				}
+			},
+			"Notifications_types": {
+				"panelColor": "#BFBFBF",
+				"flatVisible": "true",
+				"methVisible": "true",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 10,
+						"Y": 573
+					}
+				}
+			}
+		},
+		"model": {
+			"scriptMode": "manual",
+			"workspaceLeft": 0,
+			"workspaceTop": 624,
+			"methodShowMode": "true",
+			"methodInhShowMode": "true",
+			"relShowMode": "true",
+			"relationCurve": {
+				"run": true,
+				"mode": 1
+			},
+			"lastScriptLocation": {
+				"Users": {
+					"method": "Users/Users-methods.js",
+					"computed": "Users/Users-events.js"
+				},
+				"Rooms": {
+					"method": "Rooms/Rooms-methods.js"
+				},
+				"Hotels": {
+					"method": "Hotels/Hotels-methods.js"
+				},
+				"Booking": {
+					"method": "Booking/Booking-methods.js",
+					"computed": "Booking/Booking-events.js"
+				},
+				"Notifications": {
+					"method": "Notifications/Notifications-methods.js",
+					"events": "Notifications/Notifications-events.js"
+				}
+			}
+		}
+	},
+	"dataClasses": [
+		{
+			"name": "Booking",
+			"className": "Booking",
+			"collectionName": "BookingCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"indexKind": "btree",
+					"primKey": true
+				},
+				{
+					"name": "number",
+					"kind": "storage",
+					"scope": "public",
+					"type": "number"
+				},
+				{
+					"name": "start_date",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": true,
+					"defaultFormat": [
+						{
+							"format": "mm/dd/yy",
+							"presentation": "text"
+						}
+					]
+				},
+				{
+					"name": "end_date",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": true,
+					"defaultFormat": [
+						{
+							"format": "mm/dd/yy",
+							"presentation": "text"
+						}
+					]
+				},
+				{
+					"name": "client",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Users",
+					"path": "Users"
+				},
+				{
+					"name": "price",
+					"kind": "storage",
+					"scope": "public",
+					"type": "number"
+				},
+				{
+					"name": "room",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Rooms",
+					"path": "Rooms"
+				},
+				{
+					"name": "start_date_timestamp",
+					"kind": "calculated",
+					"scope": "public",
+					"type": "number",
+					"scriptKind": "javascript",
+					"onGet": [
+						{
+							"from": "$mainModel.Booking.start_date_timestamp.onGet",
+							"userDefined": true
+						}
+					]
+				},
+				{
+					"name": "end_date_timestamp",
+					"kind": "calculated",
+					"scope": "public",
+					"type": "number",
+					"scriptKind": "javascript",
+					"onGet": [
+						{
+							"from": "$mainModel.Booking.end_date_timestamp.onGet",
+							"userDefined": true
+						}
+					]
+				},
+				{
+					"name": "nights",
+					"kind": "storage",
+					"scope": "public",
+					"type": "number"
+				},
+				{
+					"name": "room_code",
+					"kind": "storage",
+					"scope": "public",
+					"type": "number"
+				},
+				{
+					"name": "checkIn",
+					"kind": "storage",
+					"scope": "public",
+					"type": "bool"
+				},
+				{
+					"name": "checkOut",
+					"kind": "storage",
+					"scope": "public",
+					"type": "bool"
+				},
+				{
+					"name": "notifications",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "NotificationsCollection",
+					"reversePath": true,
+					"path": "booking"
+				}
+			],
+			"methods": [
+				{
+					"name": "book",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Booking.methods.book",
+					"userDefined": true
+				},
+				{
+					"name": "CheckIn",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Booking.methods.CheckIn",
+					"userDefined": true
+				},
+				{
+					"name": "CheckOut",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Booking.methods.CheckOut",
+					"userDefined": true
+				}
+			]
+		},
+		{
+			"name": "Hotels",
+			"className": "Hotels",
+			"collectionName": "HotelsCollection",
+			"matchTable": "Hotel,Hostel",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"indexKind": "btree",
+					"primKey": true
+				},
+				{
+					"name": "name",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "address",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "stars",
+					"kind": "storage",
+					"matchColumn": "class,classe",
+					"scope": "public",
+					"type": "number"
+				},
+				{
+					"name": "roomsCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "RoomsCollection",
+					"reversePath": true,
+					"path": "hotel"
+				},
+				{
+					"name": "cover",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				}
+			],
+			"methods": [
+				{
+					"name": "create",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Hotels.methods.create",
+					"userDefined": true
+				},
+				{
+					"name": "search",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Hotels.methods.search",
+					"userDefined": true
+				},
+				{
+					"name": "update",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Hotels.methods.update",
+					"userDefined": true
+				}
+			]
+		},
+		{
+			"name": "Notifications",
+			"className": "Notifications",
+			"collectionName": "NotificationsCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"indexKind": "btree",
+					"primKey": true
+				},
+				{
+					"name": "description",
+					"kind": "storage",
+					"matchColumn": "Name",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "date",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false,
+					"events": [
+						{
+							"kind": "init",
+							"from": "$mainModel.Notifications.date.events.init",
+							"userDefined": true
+						}
+					]
+				},
+				{
+					"name": "type",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Notifications_types",
+					"path": "Notifications_types"
+				},
+				{
+					"name": "booking",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Booking",
+					"path": "Booking"
+				},
+				{
+					"name": "room_number",
+					"kind": "alias",
+					"matchColumn": "room",
+					"scope": "public",
+					"type": "number",
+					"path": "booking.room.number"
+				},
+				{
+					"name": "client_name",
+					"kind": "alias",
+					"scope": "public",
+					"type": "string",
+					"path": "booking.client.fullname"
+				},
+				{
+					"name": "task_done",
+					"kind": "storage",
+					"scope": "public",
+					"not_null": true,
+					"type": "bool",
+					"events": [
+						{
+							"kind": "init",
+							"from": "$mainModel.Notifications.task_done.events.init",
+							"userDefined": true
+						}
+					]
+				}
+			],
+			"methods": [
+				{
+					"name": "AddNotification",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Notifications.methods.AddNotification",
+					"userDefined": true
+				},
+				{
+					"name": "ChangeTaskState",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Notifications.methods.ChangeTaskState",
+					"userDefined": true
+				},
+				{
+					"name": "RemoveNotification",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Notifications.methods.RemoveNotification",
+					"userDefined": true
+				}
+			]
+		},
+		{
+			"name": "Notifications_types",
+			"className": "Notifications_types",
+			"collectionName": "Notifications_typesCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"indexKind": "btree",
+					"primKey": true
+				},
+				{
+					"name": "name",
+					"kind": "storage",
+					"matchColumn": "Name",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "notificationsCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "NotificationsCollection",
+					"reversePath": true,
+					"path": "type"
+				}
+			]
+		},
+		{
+			"name": "OAUTH2_USER",
+			"className": "OAUTH2_USER",
+			"collectionName": "OAUTH2_USERCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "UID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"type": "uuid",
+					"indexKind": "btree",
+					"primKey": true
+				},
+				{
+					"name": "email",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"name": "Ressources",
+			"className": "Ressources",
+			"collectionName": "RessourcesCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"indexKind": "btree"
+				},
+				{
+					"name": "name",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "type",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "room",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Rooms",
+					"path": "Rooms"
+				}
+			],
+			"key": [
+				{
+					"name": "ID"
+				}
+			]
+		},
+		{
+			"name": "Room_Type",
+			"className": "Room_Type",
+			"collectionName": "Room_TypeCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"indexKind": "btree",
+					"primKey": true
+				},
+				{
+					"name": "name",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "description",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "room",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "RoomsCollection",
+					"reversePath": true,
+					"path": "type"
+				}
+			]
+		},
+		{
+			"name": "Rooms",
+			"className": "Rooms",
+			"collectionName": "RoomsCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"indexKind": "btree",
+					"primKey": true
+				},
+				{
+					"name": "number",
+					"kind": "storage",
+					"scope": "public",
+					"type": "number"
+				},
+				{
+					"name": "hotel",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Hotels",
+					"path": "Hotels"
+				},
+				{
+					"name": "price",
+					"kind": "storage",
+					"scope": "public",
+					"type": "number",
+					"defaultValue": "200"
+				},
+				{
+					"name": "type",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Room_Type",
+					"path": "Room_Type"
+				},
+				{
+					"name": "bookingCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "BookingCollection",
+					"reversePath": true,
+					"path": "room"
+				},
+				{
+					"name": "pic",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				}
+			],
+			"methods": [
+				{
+					"name": "create",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Rooms.methods.create",
+					"userDefined": true
+				},
+				{
+					"name": "search",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Rooms.methods.search",
+					"userDefined": true
+				},
+				{
+					"name": "update",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Rooms.methods.update",
+					"userDefined": true
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"className": "Users",
+			"collectionName": "UsersCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"autogenerate": true,
+					"type": "uuid",
+					"indexKind": "btree",
+					"primKey": true
+				},
+				{
+					"name": "firstname",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "lastname",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "email",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "role",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "bookingCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "BookingCollection",
+					"reversePath": true,
+					"path": "client"
+				},
+				{
+					"name": "password",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "fullname",
+					"kind": "calculated",
+					"scope": "public",
+					"type": "string",
+					"scriptKind": "javascript",
+					"onGet": [
+						{
+							"from": "$mainModel.Users.fullname.onGet",
+							"userDefined": true
+						}
+					]
+				}
+			],
+			"methods": [
+				{
+					"name": "create",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Users.methods.create",
+					"userDefined": true
+				}
+			]
+		}
+	]
+}

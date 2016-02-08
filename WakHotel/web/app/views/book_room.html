@@ -1,0 +1,48 @@
+<div ng-include src='"html/navBar.html"'></div>
+<section class="hotels-list">
+
+  <div class="section_profile">
+    <div class="row">
+    <div class="col-md-12">
+      <div class="glyphicon glyphicon-chevron-left btn btn-default" ng-click="goBack()">Back</div>
+    </div>
+    </div>
+    <div class="profile_header">
+      <div class="profile-pic">
+        <img ng-src="img/photos/photo09.jpg"/>
+      </div>
+      <p>{{hotel.name}}</p>
+      <p class="mail">{{hotel.address}}</p>
+      <rating max="5" ng-model="hotel.stars" readonly="true" state-off="'glyphicon-star-empty'" state-on="'glyphicon-star'"></rating>
+    </div>
+
+    <div id="content">
+      <div class="tab-content">
+        <div class="tab-pane active" id="photos">
+          <div class="profile_gallery row" ng-repeat="room in rooms">
+            <div class="row">
+              <div class="col-md-12"><h4>{{room.type.name}} ({{room.number}})</h4></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                  <img class="img-thumbnail" src="img/photos/photo09.jpg">
+                </div>
+                <div class="col-md-6">
+                    <span>{{room.type.description}}</span>
+                </div>
+                <div class="col-md-1 text-center">
+                    <span><h4><strong>{{room.price}} €</strong><h4></span>
+                      <span><h5>by night<h5></span>
+                </div>
+                <div class="col-md-3">
+                    <div class="btn btn-warning" ng-click="modal_book(room)">Book</div>
+                </div>
+            </div>
+            <div class="row">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div ng-include src='"html/footer.html"'></div>
