@@ -4,15 +4,14 @@
 
 'use strict';
 angular.module('WakHotel').
-    controller('profileBookingController', ['$rootScope', '$scope', 'dialogs', 'userId', '$wakanda',
-    function ($rootScope, $scope, dialogs, userId, $wakanda) {
+    controller('profileBookingController', ['$rootScope', '$scope', 'dialogs', 'userId', '$wakanda', 'WakHotelBooking',
+    function ($rootScope, $scope, dialogs, userId, $wakanda, WakHotelBooking) {
         $scope.listImages = [];
         $scope.page = [];
         $scope.currentPage = 0;
-        $wakanda.init().then(function(ds) {
-          ds.Users.$find(userId, { select: 'bookingCollection.room.type, bookingCollection.room.hotel' }).$promise.then(function(data) {
-            $scope.booking = data.result.bookingCollection;
-          })
+        WakHotelBooking.getBookingFromUserId(userId).then(function(res){
+        	$scope.booking = res;
+        	console.log(res);
         });
 
         $scope.show_detail = function (description) {

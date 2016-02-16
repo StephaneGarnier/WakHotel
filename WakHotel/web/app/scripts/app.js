@@ -11,6 +11,7 @@ var wakHotel = angular.module('WakHotel', [
     'dialogs.main',
     'ngImgCrop',
     'wakanda',
+    'WakHotelSDK'
 ]);
 
 wakHotel.config(['$stateProvider', '$urlRouterProvider','$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
