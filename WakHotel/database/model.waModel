@@ -108,8 +108,8 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 120,
-						"Y": 907
+						"X": 196,
+						"Y": 905
 					}
 				}
 			},
@@ -130,7 +130,7 @@
 		"model": {
 			"scriptMode": "manual",
 			"workspaceLeft": 0,
-			"workspaceTop": 624,
+			"workspaceTop": 683,
 			"methodShowMode": "true",
 			"methodInhShowMode": "true",
 			"relShowMode": "true",

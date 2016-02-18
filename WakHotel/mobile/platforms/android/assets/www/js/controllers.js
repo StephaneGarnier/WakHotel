@@ -19,8 +19,7 @@ angular.module('app.controllers', [])
 })
 
 .controller('bookingCtrl', function($scope, WakHotelBooking) {
-	console.log("test");
-	WakHotelBooking.getBookingFromUserId("D48E610170E9483C9EFB73C420B6AB1C").then(function(res){
+	WakHotelBooking.getMyBooking().then(function(res){
 		$scope.booking = res;
 	});
 })

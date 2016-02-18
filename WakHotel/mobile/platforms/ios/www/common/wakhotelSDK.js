@@ -20,6 +20,18 @@
             });
             return deferred.promise;
         };
+        
+        Booking.getMyBooking = function() {
+            var deferred = $q.defer();
+            $wakanda.init().then(function(ds) {
+                $wakanda.$currentUser().then(function(user) {
+                    Booking.getBookingFromUserId(user.result.ID).then(function(data) {
+                        deferred.resolve(data);
+                    });
+                }); 
+            });
+            return deferred.promise;
+        };
         return Booking;
     }]);
 
@@ -32,9 +44,8 @@
             var deferred = $q.defer();
             $wakanda.init().then(function(ds) {
                 $wakanda.$currentUser().then(function(user) {
-                    ds.contacts.getUserFromCRM("johndoe@wakanda.io").then(function(data) {
-                        //data.result.email = user.result.userName;
-                        data.result.email = "johndoe@wakanda.io";
+                    ds.contacts.getUserFromCRM(user.result.userName).then(function(data) {
+                        data.result.email = user.result.userName;
                         deferred.resolve(data.result);
                     });
                 });
