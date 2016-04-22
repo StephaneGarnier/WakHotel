@@ -29,7 +29,4 @@ angular.module('WakHotel').
             // });
         };
 
-        $scope.logout = function () {
-            $rootScope.$broadcast('sweebi_logout_success');
-        };
     }]);

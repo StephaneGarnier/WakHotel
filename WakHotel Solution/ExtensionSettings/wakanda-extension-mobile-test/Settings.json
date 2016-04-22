@@ -1,7 +1,7 @@
 ﻿{
-	"browserPreview": "false",
-	"studioPreview": "true",
-	"androidTest": "false",
+	"browserPreview": "true",
+	"studioPreview": "false",
+	"androidTest": "true",
 	"iosTest": "true",
 	"androidEmulate": "true",
 	"iosEmulate": "false",
